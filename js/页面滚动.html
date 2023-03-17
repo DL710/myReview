@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .topBox {
+        position: fixed;
+        top: -100px;
+        left: 0;
+        height: 100px;
+        width: 100%;
+        background-color: purple;
+        z-index: 1;
+        transition: all .6s;
+    }
+
+    .m {
+        position: relative;
+        width: 500px;
+        height: 2000px;
+        margin: 0 auto;
+        background-color: pink;
+    }
+
+    .x {
+        position: absolute;
+        top: 600px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        background-color: green;
+    }
+
+    .right {
+        position: absolute;
+        top: 1000px;
+        right: -70px;
+        width: 60px;
+        height: 60px;
+        background-color: green;
+    }
+</style>
+
+<body>
+    <div class="topBox"></div>
+    <div class="m">
+        <div class="x"></div>
+        <div class="right">回到顶部</div>
+    </div>
+    <script>
+        const box = document.querySelector('.x')
+        const topBox = document.querySelector('.topBox')
+        const right = document.querySelector('.right')
+        window.addEventListener('scroll', function () {
+            // console.log(x.scrollTop);
+
+            const top = document.documentElement.scrollTop//文档被卷去的高度
+
+            const boxTop = box.offsetTop//获取元素具体父级最近定位的盒子的高度
+
+            if (top > boxTop) {
+                topBox.style.top = 0
+
+            } else {
+                topBox.style.top = '-100px'
+            }
+
+
+        })
+
+        right.addEventListener('click',function(){
+
+            document.documentElement.scrollTop = 0 //设置卷去的部位为0，然后直接回到顶部
+        })
+
+    </script>
+</body>
+
+</html>

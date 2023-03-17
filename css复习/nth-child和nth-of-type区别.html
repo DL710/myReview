@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 它会把所有的孩子排序，执行的时候先看nth-child(1)的孩子是谁，然后再看div是谁？两者相同才行 */
+    /* ul div:nth-child(1) {
+        background-color: red;
+    } */
+
+    /* 它会把指定的孩子排序，然后执行nth-of-type第几个  */
+    ul div:nth-of-type(1){
+        background-color: red;
+    }
+</style>
+
+<body>
+    <ul>
+        <li>1</li>
+        <div>jaha</div>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+
+    </ul>
+</body>
+
+</html>

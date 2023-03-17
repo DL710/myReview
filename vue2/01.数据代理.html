@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+
+
+    <script>
+        // 为什么在vue实例中,直接用this就可以拿到配置项data中的数据?
+        // 因为,当new Vue()时,实例上的_data复制了配置项里data的数据 this._data = options.data
+        // 然后实例上的 数据 进行了数据代理,代理了_data的数据
+        // 这样操作的意义在于,我们在项目中能方面我们使用配置项的数据 this.age this.name
+
+        // 这个就相当于 实例上的_data
+        const _data = {
+            age: 12
+        }
+
+        //这个就是实例上的data
+        const data = {}
+        //obj2中的age使用代理,来自于obj1的age
+        Object.defineProperty(data, 'age', {
+            // configurable:false,//不允许修改
+            // enumerable:false,//不能被枚举
+            get() {
+                console.log('读取了');
+                return _data.age
+            },
+
+            set(value) {
+                console.log('修改了');
+                _data.age = value
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+
+</html>

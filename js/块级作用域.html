@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+
+<body>
+    <script>
+        //大括号里面的变量的{}，用let const 申明存在块级作用域，其他地方访问不了if(){},for(let i=0;){}
+        //var 就没有
+
+        // if (true) {
+        //     let a = 1
+        // }
+
+        // for (let j = 0; j < 3; j++) {
+
+        // }
+        // console.log(j);
+
+        // if (true) {
+        //     var i = 9
+        // }
+        // console.log(i);
+
+        const lis = document.querySelectorAll('li')
+        //用var 打印出li的索引,0,1,2
+
+        for (var i = 0; i < lis.length; i++) {
+            //利用立即执行函数,把i传进去,形成闭包,暂时可以保存变量
+            (function (i) {
+                lis[i].addEventListener('click', function () {
+                    console.log(i);
+                })
+            })(i)
+
+            // setTimeout(() => {
+            //     console.log(i);//3个3
+            // })
+
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

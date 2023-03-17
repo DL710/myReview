@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    div {
+        width: 100px;
+        height: 60px;
+        border: 1px solid red;
+        /*一行省略号  */
+        /* white-space: nowrap;强制一行
+        overflow: hidden;影藏
+        text-overflow: ellipsis;省略号代替 */
+
+        /* 多行省略号 */
+        display: -webkit-box;
+        -webkit-box-orient: vertical; 
+        -webkit-line-clamp: 3; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+
+    }
+</style>
+
+<body>
+    <div>
+        按时参加三次卡市场空间爱上你擦上擦科技擦爱上擦擦实施
+    </div>
+</body>
+
+</html>

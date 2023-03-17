@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .timer {
+        width: 300px;
+        height: 300px;
+        background-color: #eee;
+        margin: 60px auto;
+    }
+
+    ul {
+        display: flex;
+        height: 100%;
+        background-color: pink;
+        justify-content: space-between;
+    }
+
+    ul>li {
+        width: 60px;
+        height: 60px;
+        border: 2px solid red;
+        line-height: 60px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="timer">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+
+    //到这里2023-3-15 24:00:00 的倒计时
+    function getTime() {
+        const last = +new Date('2023-3-15 11:42:00')
+        const now = +new Date()
+        const time = parseInt((last - now) / 1000)
+        //把时间戳处理成正确的时间
+        const t = parseInt(time / 60 / 60 / 24) + '天'
+        const h = parseInt(time / 60 / 60 % 24) + '小时'
+        const m = parseInt(time / 60 % 60) + '分'
+        const s = parseInt(time % 60) + '秒'
+
+        document.querySelector('ul>li:nth-child(1)').innerText = t
+        document.querySelector('ul>li:nth-child(2)').innerText = h
+        document.querySelector('ul>li:nth-child(3)').innerText = m
+        document.querySelector('ul>li:nth-child(4)').innerText = s
+    }
+
+    getTime()
+
+    const timerId = setInterval(() => {
+        getTime()
+    }, 1000)
+
+
+</script>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .box {
+        width: 400px;
+        height: 400px;
+        margin: 30px auto;
+        background-color: #eee;
+        box-shadow: 10px 10px 5px rgba(225, 225, 225, 0.8);
+    }
+
+
+    li {
+        list-style: none;
+    }
+
+    .tab {
+        display: flex;
+        height: 60px;
+    }
+
+    .tab>li {
+        flex: 1;
+        line-height: 60px;
+        text-align: center;
+
+    }
+
+    .tab .active {
+        border-bottom: 3px solid red;
+    }
+
+    .content {
+        height: 340px;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    .content>li {
+        display: none;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .toggle {
+        display: block !important;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <ul class="tab">
+            <li class="active" data-id="1">1</li>
+            <li data-id="2">2</li>
+            <li data-id="3">3</li>
+            <li data-id="4">4</li>
+            <li data-id="5">5</li>
+        </ul>
+        <ul class="content">
+            <li class="toggle">我是中间的内容1</li>
+            <li>我是中间的内容2</li>
+            <li>我是中间的内容3</li>
+            <li>我是中间的内容4</li>
+            <li>我是中间的内容5</li>
+        </ul>
+    </div>
+
+
+    <script>
+        const tab = document.querySelector('.tab')
+        //事件委托
+        tab.addEventListener('click', function (e) {
+            //当点到li才执行
+            if (e.target.nodeName === 'LI') {
+                //排他思想
+                document.querySelector('.tab > .active').classList.remove('active')
+                e.target.classList.add('active')
+                //拿到当前自定义索引
+                const id = e.target.dataset.id
+                //排他思想
+                document.querySelector('.content > .toggle').classList.remove('toggle')
+                document.querySelector(`.content > li:nth-child(${id})`).classList.add('toggle')
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

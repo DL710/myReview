@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 伪元素和伪类的区别和作用 -->
+<!-- 伪元素：在内容元素的前后插入额外的元素或样式，但是这些元素实际上并不在文档中生成。
+    它们只在外部显示可见，但不会在文档的源代码中找到它们，因此，称为“伪”元素。 ::before-->
+
+<!-- 伪类：将特殊的效果添加到特定选择器上。它是已有元素上添加类别的，不会产生新的元素 ：hover，:nth-child-->
+<style>
+    div {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+    }
+
+    div::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: rgb(170, 13, 58);
+    }
+</style>
+
+<body>
+    <div></div>
+</body>
+
+</html>

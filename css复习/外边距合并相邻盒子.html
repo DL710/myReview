@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        margin-bottom: 50px;
+    }
+
+    .box2 {
+        /* float: left; */
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background-color: goldenrod;
+        margin-top: 100px;
+    }
+</style>
+
+<body>
+
+    <!-- 相邻两个垂直块级盒子同时设置margin-top，magin-bottom时，会出现margin合并，取两个的最大值 -->
+
+<!-- 
+    解决办法：
+    对于折叠的情况，主要有两种：兄弟之间重叠和父子之间重叠
+    （1）兄弟之间重叠
+
+    底部元素变为行内盒子：display: inline-block
+    底部元素设置浮动：float
+    底部元素的position的值为absolute/fixed
+
+    （2）父子之间重叠
+
+    父元素加入：overflow: hidden
+    父元素添加透明边框：border:1px solid transparent
+    子元素变为行内盒子：display: inline-block
+    子元素加入浮动属性或定位 -->
+
+    <div class="box1">1</div>
+    <div class="box2"></div>
+</body>
+
+</html>

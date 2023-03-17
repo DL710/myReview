@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //var在（当前）作用域下，变量会提升，但是（不会赋值），所以undefind
+        // console.log(a);
+        // var a = 1
+
+        // 函数表达式，先申明再调用,不然报错，这个相当于，先申明var fun 
+
+        fun()
+        var fun = function () {
+            console.log(1);
+        }
+
+
+    </script>
+</body>
+
+</html>

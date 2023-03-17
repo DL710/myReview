@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        width: 300px;
+        height: 300px;
+        border: 1px solid red;
+        margin: 0 auto;
+        /* overflow: hidden;溢出隐藏 */
+
+    }
+
+    .son {
+        width: 30px;
+        height: 600px;
+        background-color: green;
+        /* display: none;显示与、影藏，不占原来的位置，会让元素完全从渲染树中消失，渲染时不会占据任何空间 */
+        visibility: hidden;显示与、影藏，占原来的位置，不会让元素从渲染树中消失，渲染的元素还会占据相应的空间，只是内容不可见。
+    }
+</style>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <p>哈哈哈</p>
+    </div>
+</body>
+
+</html>

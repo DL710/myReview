@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>发送短信</button>
+    <script>
+        const obj = {
+            name: 'zyl'
+        }
+
+        function fn(x, y) {
+            console.log(x, y);
+            console.log('我被调用了');
+            console.log(this);
+        }
+
+        //1:call改变this指向，马上调用函数， 传参1,2,
+        //fn.call(obj, 1, 2)
+
+
+
+        //2:apply改变this指向，马上调用函数， 传参[1,2] 接收的时候也是会穿变成1,2,3
+        //fn.apply(obj, [1, 2])
+        // 使用它求数组的最大值
+        // const max = Math.max.apply(null, [1, 2, 3, 4])
+        // console.log(max);
+
+
+
+        //3:bind使用的最多，改变this指向，但是不调用，传参1,2
+        // const res = fn.bind(obj, 1, 2)
+        // res()
+        //使用场景  点击按钮，马上禁用，然后再解除禁用
+        document.querySelector('button').addEventListener('click', function () {
+            //这外边的this就是btn
+            this.disabled = true
+            setTimeout(function (x, y) {
+                console.log(x, y);
+                // 这里的this不一样，window，所以要改变this指向，因为this只在方法里，
+                //所以我们是给settimeout里面的方法加
+                this.disabled = false
+            }.bind(this, 1, 2), 2000)
+        })
+
+    </script>
+</body>
+
+</html>

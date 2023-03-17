@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="up"></div>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="box"></div>
+    <script>
+        // 1 获取亲爸爸节点,找不到为null
+        const fa = document.querySelector('.son').parentNode
+        
+        //2 chilren 得到所有的亲儿子的伪数组，伪数组是有下表，长度，但是没有真数组的方法
+        
+        //3 获取兄弟节点 
+        console.log(fa.nextElementSibling);//下一个兄弟节点
+        console.log(fa.nextElementSibling);//下一个兄弟节点
+    </script>
+</body>
+
+</html>

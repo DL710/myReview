@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>你是搁置</div>
+    <script>
+
+        //1：throw 执行，直接中断程序，常搭配new Error使用。
+        // function fn(x, y) {
+        //     if (!x || !y) {
+        //         throw new Error('传参不正确！')
+        //     }
+        //     return x + y
+        // }
+        // fn()
+
+        //2 : try catch finally try放（可能）出错的代码，catch可以捕获错误信息，finally无论错误和对，都会走这里
+        try {
+            // debugger
+            const div = document.querySelector('.div')
+            div.style.color = 'red'
+        } catch (error) {
+            //这里一般搭配throw使用
+            throw new Error(error)
+            console.log('这里不会走');
+        }
+        finally {
+            console.log('这里都会走');
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

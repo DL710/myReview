@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        width: 200px;
+        height: 60px;
+    }
+</style>
+
+<body>
+
+    <button>发送信息</button>
+    <script>
+
+
+        // 1，节流：（技能冷却）单位时间内，频繁操作，只执行一次操作。throttle(上一个定时器完了，再开下一个定时器)
+        // 一个按钮，点击发送请求，单位时间内，只执行一次。不能频繁发送请求。(按钮这个应该是节流，不改了)
+        // 节流应该用在 滚动事件  鼠标移动 页面尺寸缩放等
+
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', throttle(getInfo, 500))
+
+        //发送请求逻辑
+        function getInfo() {
+            console.log('发送请求');
+        }
+        //封装 throttle
+        function throttle(fn, time) {
+            //这里必须return一个匿名函数，不然封装的函数直接就调用了
+            let timerId = null
+            return function () {
+                //1.如果没有定时器，就开一个定时器，如果有，就不开
+                //2.上一个定时器执行完了，就清空定时器，但是setTimeout里不能用clearInterval(),这样清不了
+                if (!timerId) {
+                    timerId = setTimeout(() => {
+                        timerId = null
+                        fn()
+                    }, time)
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

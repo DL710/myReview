@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .father {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+        margin: 100px auto;
+    }
+
+    .son {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+    }
+
+    p {
+        position: relative;
+        top: 0;
+        background-color: pink;
+    }
+</style>
+
+<!-- 1：相对定位：相对于自己原来的位置进行位移，自恋型，占有原来的位置
+     2：绝对定位：相对于自己最近带定位的父盒子来偏移位置，不占有原来的位置
+     3：绝对定位；相对于浏览器试图窗口来偏移位置，不占有位置。
+     4：粘性定位；sticky，以浏览器窗口偏移，占有原来啊位置，必须加top，bottom，left，right其中一个才生效，ie不支持
+     5：子绝父相；
+     6：定位和浮动的盒子都会脱离标准流，如果块级盒子不给宽度，就会被内容撑开，不会继承父盒子宽度。
+        如果是行类元素，就可以直接设置宽高。 
+        相对定位，不会变化。
+-->
+
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <p>我是一个屁</p>
+
+</body>
+
+</html>

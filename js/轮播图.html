@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .imgBox {
+        width: 300px;
+        height: 400px;
+        margin: 50px auto;
+    }
+
+    .img {
+        width: 100%;
+        height: 320px;
+        background-color: pink;
+        vertical-align: middle;
+    }
+
+    .footer {
+        height: 80px;
+        position: relative;
+        background-color: #614343;
+        color: #fff
+    }
+
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        height: 30px;
+
+    }
+
+    .prev,
+    .next {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        padding: 0 5px;
+        background-color: #715557;
+    }
+
+    .next {
+        margin-left: 10px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    ul {
+        display: flex;
+        height: 40px;
+        width: 50%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    ul>li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: grey;
+    }
+
+    ul>li:hover {
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #fff;
+    }
+</style>
+
+<body>
+    <div class="imgBox">
+        <img class="img" src="../images/baoer1.jpg"></img>
+
+        <div class="footer">
+            <section class="footer-top">
+                <p class="tip"></p>
+                <div class="btn">
+                    <span class="prev"> &lt </span>
+                    <span class="next"> &gt </span>
+                </div>
+
+            </section>
+
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <script>
+        const arr = [
+            {
+                url: '../images/baoer1.jpg',
+                title: '游玩1',
+            },
+            {
+                url: '../images/baoer2.jpg',
+                title: '游玩2',
+            },
+            {
+                url: '../images/baoer3.jpg',
+                title: '游玩3',
+            },
+            {
+                url: '../images/baoer4.jpg',
+                title: '游玩4',
+            },
+            {
+                url: '../images/baoer5.jpg',
+                title: '游玩5',
+            },
+            {
+                url: '../images/baoer6.jpg',
+                title: '游玩6',
+            }
+        ]
+
+        let num = 0
+        let timer = null
+        const imgBox = document.querySelector('.imgBox')
+        const prev = document.querySelector('.prev')
+        const next = document.querySelector('.next')
+        const img = document.querySelector('.img')
+        const tip = document.querySelector('.tip')
+        tip.innerText = arr[num].title
+
+        //右侧按钮
+        next.addEventListener('click', function () {
+            num++
+            num = num > 5 ? 0 : num
+            img.src = arr[num].url
+            tip.innerText = arr[num].title
+            //圆圈 先移除选中的类名
+            togggle()
+        })
+
+        //左侧按钮
+        prev.addEventListener('click', function () {
+            num--
+            num = num < 0 ? 5 : num
+            img.src = arr[num].url
+            tip.innerText = arr[num].title
+            //圆圈 先移除选中的类名
+            togggle()
+        })
+
+        //圆圈 先移除选中的类名再加类名
+        function togggle() {
+            document.querySelector('.active').classList.remove('active')
+            document.querySelector(`ul > li:nth-child(${num + 1})`).classList.add('active')
+        }
+
+        //轮播图
+        function siwper(time) {
+            timer = setInterval(() => {
+                next.click()
+            }, time)
+        }
+        siwper(1000)
+
+        //鼠标经过
+        imgBox.addEventListener('mouseover', function () {
+            clearInterval(timer)
+        })
+        //鼠标离开
+        imgBox.addEventListener('mouseleave', function () {
+            // clearInterval(timer)
+            siwper(1000)
+        })
+
+    </script>
+</body>
+
+
+</html>

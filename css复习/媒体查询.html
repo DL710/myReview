@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* 媒体查询和rem就可以控制不同页面文字盒子大小 */
+    /* max-width min-width 都包含等于的意思 */
+    /* 当屏幕小于540时，为蓝色，当屏幕大于等于540并且小于等于969时，为绿色，当屏幕大于等于970时，为红色 */
+    /* 页面的固定写法 */
+    @media screen and (max-width:539px) {
+        html{
+            font-size: 10px;
+        }
+        body {
+            background-color: blue;
+        }
+    }
+
+    /* @media screen and (min-width:540px) and (max-width:969px) {
+        html{
+            font-size: 20px;
+        }
+        body {
+            background-color: green;
+        }
+    } */
+    /* css的层叠性 */
+    /* screen  and px 都不能省略*/
+    @media screen and (min-width:540px) {
+        html{
+            font-size: 20px;
+        }
+        body {
+            background-color: green;
+        }
+    }
+
+    @media screen and (min-width:970px) {
+        html{
+            font-size: 30px;
+        }
+        body {
+            background-color: red;
+        }
+    }
+
+    p{
+        font-size: 1rem;
+    }
+</style>
+
+<body>
+<p>我是rem布局</p>
+</body>
+
+</html>

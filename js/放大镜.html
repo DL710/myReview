@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    li {
+        list-style: none;
+    }
+    li:hover{
+        cursor: pointer;
+    }
+
+    .glass {
+        position: relative;
+        display: flex;
+        width: 800px;
+        height: 400px;
+        margin: 20px auto;
+    }
+
+    .left,
+    .right {
+        width: 50%;
+    }
+
+    .left {
+        position: relative;
+        background-color: aquamarine;
+    }
+
+    .left .mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        opacity: .3;
+    }
+
+    .left .mask:hover {
+        cursor: pointer;
+    }
+
+    .left .small {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        left: 0;
+        bottom: -60px;
+        width: 100%;
+    }
+
+    .active {
+        border: 1px solid rgb(40, 216, 52);
+    }
+
+    .left .small>li {
+        width: 60px;
+        height: 60px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .right {
+        display: none;
+        background-color: pink;
+        background-image: url('../images/long.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 800px 800px;
+    }
+</style>
+
+<body>
+    <!-- 放大镜 -->
+    <div class="glass">
+        <div class="left">
+            <img src="../images/long.jpg" data-img="1" alt="">
+            <div class="mask"></div>
+            <ul class="small">
+                <li class="active">
+                    <img src="../images/long.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/xiatian.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/baoer1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/baoer2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/baoer3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/baoer4.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="right"></div>
+    </div>
+    <script>
+        //先点击小盒子的img，让大盒子切换图片
+        const small = document.querySelector('.small')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+        const mask = document.querySelector('.mask')
+
+        small.addEventListener('mouseover', function (e) {
+            //判断只
+            if (e.target.tagName === 'IMG') {
+                //小图片的active
+                document.querySelector(' .small .active').classList.remove('active')
+                e.target.parentNode.classList.add('active')
+                //改变两个大盒子的图片地址
+                left.children[0].src = e.target.src
+                right.style.backgroundImage = `url(${e.target.src})`
+            }
+        })
+
+        //经过大盒子，使放大盒子显示,离开影藏
+        left.addEventListener('mouseover', show)
+        left.addEventListener('mouseleave', hid)
+        let timer = null
+        //显示
+        function show() {
+            clearInterval(timer)
+            right.style.display = 'block'
+        }
+        function hid() {
+            timer = setTimeout(() => {
+                right.style.display = 'none'
+            }, 200)
+        }
+        //经过放大盒子，显示放大镜和隐藏
+        right.addEventListener('mouseover', show)
+        right.addEventListener('mouseleave', hid)
+
+        //阴影盒子在左侧大盒子的位移，鼠标在页面的距离 - 左侧大盒子在页面的距离 ，就是阴影盒子的位置
+        let mx = 0, my = 0
+        left.addEventListener('mousemove', function (e) {
+
+            if (e.target.tagName !== 'DIV') return
+            mx = parseInt(e.pageX - left.getBoundingClientRect().x)
+            my = parseInt(e.pageY - left.getBoundingClientRect().y)
+
+            if (mx < 100) mx = 0
+            if (100 <= mx && mx <= 300) mx = mx - 100
+            if (mx > 300) mx = 200
+            mask.style.left = mx + 'px'
+
+            if (my < 100) my = 0
+            if (100 <= my && my <= 300) my = my - 100
+            if (my > 300) my = 200
+            mask.style.top = my + 'px'
+
+            //放大镜位置是左边盒子位移的2倍
+            right.style.backgroundPositionX = -2 * mx + 'px'
+            right.style.backgroundPositionY = -2 * my + 'px'
+        })
+
+
+
+    </script>
+
+
+</body>
+
+</html>

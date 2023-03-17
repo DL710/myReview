@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+     //一个外部函数拿到局部函数的变量，闭包能使函数里的变量暂时保存，但会存在内存泄漏
+        function getNum() {
+            let a = 0
+            return  function num() {
+                return a++
+            } 
+        }
+
+        const res = getNum()
+        console.log(res());
+    </script>
+</body>
+
+</html>
