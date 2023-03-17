@@ -11,7 +11,7 @@
     git add .添加到暂存区
     git commit -m "第一次提交" 添加到历史区
     git log 查看历史区版本
-    git --hard xxx  提交历史记录的前6位版本号 返回指定版本
+    git reset --hard xxx  提交历史记录的前6位版本号 返回指定版本
     git revert xxx/HEAD 返回到上一个版本,但是log记录会增加一条,实际是返回了上一个版本,
     这里可以解决远端代码提交完后,想回到上一个版本,就可以用这个命令
     git reflog 查看所有提交记录
