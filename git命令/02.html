@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!-- 创建分支 -->
     <!-- 我是master修改的代码 -->
-    git remote add origin(别名) xxxxxxxxx(地址)  添加远程仓库
-    git remote remove origin(别名)   删除远程仓库
-    git remote -v 查看远程地址 
+    git remote add origin(别名) xxxxxxxxx(地址) 添加远程仓库
+    git remote remove origin(别名) 删除远程仓库
+    git remote -v 查看远程地址
+    git push -u origin master
+    git pull origin master 拉取远程仓库(拉取远程master分支代码)
+    git pull origin login 拉取远程仓库(拉取远程login分支代码)
+    <!-- 如果要删除远程login分支 -->
+    git push origin :login
+    .gitignore 里面配置忽略上传的文件,例: *.log的文件 1.txt文件
     <!-- 测试vscode提交 -->
     <!-- 测试-u 提交 -->
-    <!-- 种子词 -->
+    <!-- -u 表示记录上一次地址,下次直接用git push 就可以了 -->
+    <!-- 测试revert -->
 </body>
-</html>
+ 
